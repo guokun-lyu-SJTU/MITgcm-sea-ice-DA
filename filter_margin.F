@@ -55,8 +55,8 @@ C     my_value - is the threshhold value for filtering.
         ma=0.
         do bj = myByLo(myThid),myByHi(myThid)
             do bi = myBxLo(myThid),myBxHi(myThid)
-              do j = 1, sNy
-                do i = 1, sNx
+              do j = 1-oly, sNy+oly
+                do i = 1-olx, sNx+olx
                   if(abs(var_adj(i,j,bi,bj)) .gt. 10.e-20)then
                     dev1=dev1+1.;
                     ma=ma+abs(var_adj(i,j,bi,bj))
@@ -85,8 +85,8 @@ C        IF(dev1)
              aux = var_adj
       do bj = myByLo(myThid),myByHi(myThid)
             do bi = myBxLo(myThid),myBxHi(myThid)
-              do j = 1, sNy
-                do i = 1, sNx
+              do j = 1-oly, sNy+oly
+                do i = 1-olx, sNx+olx
                    s = 0
                    s1 = 0
                    dev1 = 0
@@ -139,7 +139,7 @@ C        IF(dev1)
 
           end do
        end do
-       var_adj(1:sNx,1:sNy,:,:) = aux(1:sNx,1:sNy,:,:)
+!       var_adj(1:sNx,1:sNy,:,:) = aux(1:sNx,1:sNy,:,:)
       end subroutine
 
 
